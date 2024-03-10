@@ -5,7 +5,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="h-screen w-full" >
+    <div className="h-screen w-full">
       <LandingSection />
     </div>
   )
