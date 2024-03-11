@@ -39,14 +39,14 @@ function LandingSection() {
                     <p className="text-3xl">
                         Because We Know You'd Rather Be Tweaking Kerning
                     </p>
-                    <p className="font-light text-xl">
+                    <p className="font-thin tracking-wider leading-12 text-xl">
                         Look, we're not copywriters. But you're a visionary with a discerning eye for sans-serifs.
                         Designer Ipsum delivers just enough pretentious word salad to finesse that client pitch until
                         your real content arrives. No judgment here.
                     </p>
                 </div>
             </div> 
-            <div className="flex gap-4 w-full items-end">
+            <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 w-full items-end">
                 <div className="w-full">
                     <label className="label">
                         <span className="label-text">Tokens per Sentence</span>
@@ -80,7 +80,7 @@ function LandingSection() {
                         onChange={($event) => setParagraphCount($event.target.value)}   
                     />
                 </div>
-                <button className="btn btn-primary" onClick={generateNewIpsum}>
+                <button className="btn btn-primary w-full sm:w-fit mt-4 sm:mt-0" onClick={generateNewIpsum}>
                     Generate
                 </button>
             </div>
@@ -88,7 +88,7 @@ function LandingSection() {
                 { generatedIpsum.length > 0 &&
                     <button className="btn btn-xs btn-secondary absolute top-2 right-2" onClick={() => copyToClipboard(generatedIpsum)}>copy to clipboard</button>
                 }
-                <textarea placeholder="Enter something funny." id="text" name="text" value={generatedIpsum} disabled></textarea>
+                <textarea placeholder="Generated Ipsum Goes Here" id="text" name="text" value={generatedIpsum} disabled></textarea>
             </div>
         </div>
     )
