@@ -22,12 +22,17 @@ function LandingSection() {
             return
         }
         elem.style.height = String(elem.scrollHeight + 32)+"px";
-      }
+    }
+
+    function copyToClipboard(text: string) {
+        navigator.clipboard.writeText(text);
+        alert("Copied the text to the clipboard");
+    }
 
     return (
-        <div className="w-full flex flex-col items-center h-fit">
-            <div className="w-full my-16 flex">
-                <div className="max-w-[500px] relative">
+        <div className="w-full flex flex-col items-center h-fit gap-8">
+            <div className="w-full mt-16 flex">
+                <div className="max-w-[700px] relative text-center mx-auto">
                     <h1 className="text-5xl font-bold">
                         DESIGNER IPSUM
                     </h1>
@@ -40,31 +45,51 @@ function LandingSection() {
                         your real content arrives. No judgment here.
                     </p>
                 </div>
-                <div className="flex flex-col gap-4 overflow-hidden w-full">
-                    <input 
-                        className="input input-bordered"
+            </div> 
+            <div className="flex gap-4 w-full items-end">
+                <div className="w-full">
+                    <label className="label">
+                        <span className="label-text">Tokens per Sentence</span>
+                    </label>
+                    <input
+                        className="input input-bordered w-full"
                         placeholder="words per sentence"
                         value={wordCount}
                         onChange={($event) => setWordCount($event.target.value)}
                     />
+                </div>
+                <div className="w-full">
+                    <label className="label">
+                        <span className="label-text">Sentences per Paragraph</span>
+                    </label>
                     <input 
-                        className="input input-bordered"
+                        className="input input-bordered w-full"
                         placeholder="sentences per paragraph"
                         value={sentenceCount}
                         onChange={($event) => setSentenceCount($event.target.value)}
                     />
+                </div>
+                <div className="w-full">
+                    <label className="label">
+                        <span className="label-text">Paragraphs</span>
+                    </label>
                     <input 
-                        className="input input-bordered" 
+                        className="input input-bordered w-full"
                         placeholder="paragraphs"
                         value={paragraphCount}
                         onChange={($event) => setParagraphCount($event.target.value)}   
                     />
-                    <button className="btn btn-primary" onClick={generateNewIpsum}>
-                        Generate
-                    </button>
                 </div>
+                <button className="btn btn-primary" onClick={generateNewIpsum}>
+                    Generate
+                </button>
             </div>
-            <textarea placeholder="Enter something funny." id="text" name="text" value={generatedIpsum}></textarea>
+            <div className="relative max-w-[740px] w-full my-12">
+                { generatedIpsum.length > 0 &&
+                    <button className="btn btn-xs btn-secondary absolute top-2 right-2" onClick={() => copyToClipboard(generatedIpsum)}>copy to clipboard</button>
+                }
+                <textarea placeholder="Enter something funny." id="text" name="text" value={generatedIpsum} disabled></textarea>
+            </div>
         </div>
     )
 }
