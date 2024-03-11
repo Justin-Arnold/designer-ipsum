@@ -31,15 +31,15 @@ function LandingSection() {
 
     return (
         <div className="w-full flex flex-col items-center h-fit gap-8">
-            <div className="w-full mt-16 flex">
+            <div className="w-full flex">
                 <div className="max-w-[700px] relative text-center mx-auto">
-                    <h1 className="text-5xl font-bold">
+                    <h1 className="text-5xl font-bold tracking-widest">
                         DESIGNER IPSUM
                     </h1>
                     <p className="text-3xl">
                         Because We Know You'd Rather Be Tweaking Kerning
                     </p>
-                    <p className="font-thin text-xl">
+                    <p className="font-light text-xl">
                         Look, we're not copywriters. But you're a visionary with a discerning eye for sans-serifs.
                         Designer Ipsum delivers just enough pretentious word salad to finesse that client pitch until
                         your real content arrives. No judgment here.
