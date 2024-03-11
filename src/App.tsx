@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import LandingSection from './conponents/LandingSection'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <div className="h-screen w-full">
+    <div className="h-fit w-full bg-base-100 p-12 textured rounded-2xl">
       <LandingSection />
     </div>
   )
