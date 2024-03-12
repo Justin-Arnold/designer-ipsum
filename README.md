@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# Designer Ipsum
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Designer Ipsum was a fun weekend project born from wanting to make a quick React app, as It had been a while since I had build anything in it.
+Generally for I prefer Vue and Astro for front-end frameworks. This app would likely benefit from being statically generated as it is very simple and could benefit from the SEO improvements. To be honest, the app is simple enough it would likely be more than fine to build it in just HTML/CSS and Typescript.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Running the app.
+1. Clone this repository
+2. CD into the project directory.
+3. Install project dependencies (I used bun)
 ```
+  bun i
+```
+4. Run the development server
+```
+  bun run dev
+```
+## TODO 
+This is a short list of things I might end up doing with this project, especially if it starts to see any form of real traffic. None of this is garunteed though, as this was just a small sample React project.
+- [ ] Fix text box on mobile.
+- [ ] Statically generate the site for better SEO
+- [ ] Increase the pool of possible words and phrases
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Inspiration
+This project was inspired by other fun lorem ipsum generators, some of which I will link below.
+- [Pirate Ipsum](https://pirateipsum.me/)
+- [Hipster Ipsum](https://hipsum.co/)
+- [Hodor Ipsum](http://hodoripsum.com/)
