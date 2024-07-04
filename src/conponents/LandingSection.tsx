@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { generateIpsum } from "../utils/ipsumGenerator"
 
 function LandingSection() {
@@ -11,18 +11,17 @@ function LandingSection() {
     function generateNewIpsum() {
 
         const newIpsum = generateIpsum(parseInt(wordCount), parseInt(sentenceCount), parseInt(paragraphCount))
-        console.log(newIpsum)
         setGeneratedIpsum(newIpsum)
-        setTimeout(()=> changeHeight("text"), 0)
     }
 
-    function changeHeight(id: string) {
-        let elem = document.getElementById(id)
-        if (!elem) {
-            return
+    const textareaRef = useRef(null);
+
+    useEffect(() => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = "auto";
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
         }
-        elem.style.height = String(elem.scrollHeight + 32)+"px";
-    }
+    }, [generatedIpsum]);
 
     function copyToClipboard(text: string) {
         navigator.clipboard.writeText(text);
@@ -86,9 +85,14 @@ function LandingSection() {
             </div>
             <div className="relative max-w-[740px] w-full my-12">
                 { generatedIpsum.length > 0 &&
-                    <button className="btn btn-xs btn-secondary absolute top-2 right-2" onClick={() => copyToClipboard(generatedIpsum)}>copy to clipboard</button>
+                    <button 
+			className="btn btn-xs btn-secondary absolute top-2 right-2"
+			onClick={() => copyToClipboard(generatedIpsum)}
+		    >
+		        copy to clipboard
+		    </button>
                 }
-                <textarea placeholder="Generated Ipsum Goes Here" id="text" name="text" value={generatedIpsum} disabled></textarea>
+                <textarea ref={textareaRef} placeholder="Generated Ipsum Goes Here" id="text" name="text" value={generatedIpsum} disabled></textarea>
             </div>
         </div>
     )
