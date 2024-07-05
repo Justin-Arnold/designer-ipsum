@@ -14,13 +14,14 @@ function LandingSection() {
         setGeneratedIpsum(newIpsum)
     }
 
-    const textareaRef = useRef(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
-        if (textareaRef.current) {
-            textareaRef.current.style.height = "auto";
-            textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
-        }
+        if (!textareaRef.current) {
+	    return;
+	}
+        textareaRef.current.style.height = "auto";
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
     }, [generatedIpsum]);
 
     function copyToClipboard(text: string) {
