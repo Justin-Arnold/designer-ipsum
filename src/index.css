@@ -34,7 +34,7 @@ body > * {
 }
 
 #text {
-	@apply sm:bg-left pl-14 sm:pl-[100px];
+	@apply sm:bg-left pl-20 sm:pl-[100px];
   	background-position: -20px top;
         background-attachment: local;
 	width: 100%;
