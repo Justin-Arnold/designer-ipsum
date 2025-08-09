@@ -1,23 +1,15 @@
-FROM oven/bun:1-alpine AS base
+# ---- build ----
+FROM oven/bun:1-alpine AS build
 WORKDIR /app
-
 COPY package.json bun.lock ./
-
-FROM base AS prod-deps
-RUN bun install --frozen-lockfile --production
-
-FROM base AS build-deps
 RUN bun install --frozen-lockfile
-
-FROM build-deps AS build
 COPY . .
 RUN bun run build
 
-FROM base AS runtime
-COPY --from=prod-deps /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/vite.config.ts ./
-
-EXPOSE 4173
-
-CMD bun run preview
+# ---- runtime ----
+FROM nginx:alpine AS runtime
+# drop in a basic nginx config (optional but recommended)
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+# nginx image has the right CMD already
