@@ -1,4 +1,4 @@
-import LandingSection from './conponents/LandingSection'
+import LandingSection from './components/LandingSection'
 
 function App() {
 
