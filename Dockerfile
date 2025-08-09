@@ -18,8 +18,6 @@ COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/vite.config.ts ./
 
-ENV HOST=0.0.0.0
-ENV PORT=5173
-EXPOSE 5173
+EXPOSE 4173
 
-CMD bun run preview --port $PORT --host $HOST --allowed-hosts designeripsum.xyz
+CMD bun run preview --allowed-hosts designeripsum.xyz
